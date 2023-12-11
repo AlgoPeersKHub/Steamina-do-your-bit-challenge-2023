@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Programming Concepts
+
+## Programming Language
+   Python
+
+## Coding environment / Text editor
+   Mirosoft Makecode (https://makecode.microbit.org/#editor)
+
+## Feel free to comment or contribute
+
+"""
+
+## Project Code / Program
+
+# Initialize the distance variable
+distance = 0
+
+# Display the YES icon on the micro:bit
+basic.show_icon(IconNames.YES)
+
+# Define the main function that runs forever
+def on_forever():
+    global distance
+    
+    # Measure the distance using the ultrasonic sensor
+    distance = sonar.ping(DigitalPin.P0, DigitalPin.P2, PingUnit.CENTIMETERS)
+    
+    # Check if the distance is less than 100 centimeters
+    if distance < 100:
+        # Display the CONFUSED icon if the distance is less than 100 centimeters
+        basic.show_icon(IconNames.CONFUSED)
+        
+        # Turn on the digital pin P1
+        pins.digital_write_pin(DigitalPin.P1, 1)
+    else:
+        # Turn off the digital pin P1 if the distance is greater than or equal to 100 centimeters
+        pins.digital_write_pin(DigitalPin.P1, 0)
+
+# Run the on_forever function continuously
+basic.forever(on_forever)
+
